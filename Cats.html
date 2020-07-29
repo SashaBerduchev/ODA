@@ -8,14 +8,23 @@
 <body>
 <oda-module id="my-cat">
     <template>
-        <span>Мяу</span>
-        <a href="HW_1.html">HW_1</a>
+        <span  v-text="Gender">Мяу</span>
     </template>
     <script>
         ODA({
             is : 'my-cat',
-            properties:{
-                nickName : 'Мурка'
+            properties: {
+
+                nickName: {
+                    category : 'Свойства кошки',
+                    default: 'Мурка',
+                    label : 'Кличка'
+                },
+                Gender:{
+                    category : 'Свойства кошки',
+                    enum: ['Кот', 'Кошка'],
+                    default: 'Кошка'
+                }
             }
         })
     </script>

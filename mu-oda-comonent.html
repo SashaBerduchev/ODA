@@ -8,17 +8,19 @@
 <body>
 <oda-module id="my-component">
     <template>
-        <span>Hellow world!</span>
+        <span v-text="property">Hellow world!</span>
         <a href="Cats.html">Cats</a>
+        <a href="HW_1.html">HW</a>
     </template>
     <script>
         ODA({
             is : 'my-component',
             properties:{
-                property : 'свойство',
-                myProperty : 'моесвойство',
-                yourProperty : 'вашеСвойство',
-                myAndYourPoperty : 'моеиВашеСвойство'
+                property :{
+                    category : 'Моя категория',
+                    default: 'свойство',
+                    enum : ['Значение 1', 'Значение 2']
+                }
 
             }
         })
