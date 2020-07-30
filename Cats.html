@@ -11,6 +11,7 @@
         <span  v-text="Gender">Мяу</span>
         <span  v-text="nickName"></span>
         <span v-for="item in pows" >Ножка{{item}} </span>
+        <span  v-text="property"></span>
     </template>
     <script>
         ODA({
@@ -35,6 +36,17 @@
                 },
                 pows:{
                     value:[{pow1:4},{pow2:4},{pow3:4},{pow4:4}]
+                },
+                _countClows:{
+                      get(){
+                         let count = this.pows.value;
+                         return count
+                      }
+                },
+                property: {
+                    get(){
+                        return 'Количество ' +  this._countClows;
+                    }
                 }
             }
         })

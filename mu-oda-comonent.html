@@ -16,6 +16,9 @@
         <span v-for="value, name in propertyObj">{{name}}:{{value}}</span>
         <a href="Cats.html">Cats</a>
         <a href="HW_1.html">HW</a>
+        <span v-text="FirstName"></span>
+        <span v-text="LastName"></span>
+        <span v-text="FullName"></span>
     </template>
     <script>
         ODA({
@@ -24,7 +27,11 @@
                 property :{
                     category : 'Моя категория',
                     default: 'свойство',
-                    enum : ['Значение 1', 'Значение 2']
+                    enum : ['Значение 1', 'Значение 2'],
+                    _property: 'Скрытое',
+                    get(){
+                        return this._property;
+                    }
                 },
                 Array:{
                     value: ['1', '2', '3', '4']
@@ -34,6 +41,23 @@
                         name1: 'Значение 1',
                         name2: 'Значение 2'
                     }
+                },
+                FirstName:{
+                    value: 'Sasha'
+                },
+                LastName:{
+                    value : 'Vinichuk'
+                },
+                FullName:{
+                    label: 'Полное имя',
+                    get() {
+                        return this.FirstName + ' ' + this.LastName;
+                    }
+                },
+                set(value){
+                    let names = value.split(' ');
+                    this.FirstName = names[0];
+                    this.LastName = names[names.length - 1];
                 }
 
             }
