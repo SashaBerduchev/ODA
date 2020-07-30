@@ -11,6 +11,9 @@
         <span v-text="property">Hellow world!</span>
         <span v-text="Array.length">Array</span>
         <span v-for="item, index in Array" :key="index">Element[{{index}}]={{item}}  </span>
+        <span v-text="propertyObj"></span>
+        <span v-text="propertyObj.name2"></span>
+        <span v-for="value, name in propertyObj">{{name}}:{{value}}</span>
         <a href="Cats.html">Cats</a>
         <a href="HW_1.html">HW</a>
     </template>
@@ -25,6 +28,12 @@
                 },
                 Array:{
                     value: ['1', '2', '3', '4']
+                },
+                propertyObj: {
+                    default: {
+                        name1: 'Значение 1',
+                        name2: 'Значение 2'
+                    }
                 }
 
             }
