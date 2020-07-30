@@ -18,12 +18,18 @@
                 nickName: {
                     category : 'Свойства кошки',
                     default: 'Мурка',
-                    label : 'Кличка'
+                    label : 'Кличка',
+                    type : String
                 },
                 Gender:{
                     category : 'Свойства кошки',
                     enum: ['Кот', 'Кошка'],
                     default: 'Кошка'
+                },
+                Weight: {
+                    category : 'Свойства кошки',
+                    default: 0,
+                    type: Number
                 }
             }
         })

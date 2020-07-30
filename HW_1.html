@@ -9,6 +9,7 @@
 <oda-module id="hw-1">
     <template>
         <span v-text="Name">Апельсин</span>
+        <span v-text="Weight">Weight</span>
     </template>
     <script>
         ODA({
@@ -21,7 +22,8 @@
                 },
                 Weight:{
                     category:'Свойства',
-                    value: 'Вес'
+                    value: 'Вес',
+                    type: Number
                 }
             }
         })
