@@ -9,6 +9,8 @@
 <oda-module id="my-cat">
     <template>
         <span  v-text="Gender">Мяу</span>
+        <span  v-text="nickName"></span>
+        <span v-for="item in pows" >Ножка{{item}} </span>
     </template>
     <script>
         ODA({
@@ -30,6 +32,9 @@
                     category : 'Свойства кошки',
                     default: 0,
                     type: Number
+                },
+                pows:{
+                    value:['1','2','3','4']
                 }
             }
         })
