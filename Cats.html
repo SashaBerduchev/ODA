@@ -32,6 +32,7 @@
         <span class="array" v-for="item in pows" >Ножка{{item}} </span>
         <span  class="prop" v-text="property"></span>
         <span class="count">Колличество: </span><span  v-text="claws"></span>
+
     </template>
     <script>
         ODA({
@@ -87,11 +88,13 @@
 
                 }
             },
+
             observers:[
                 function observer(frontPows, hindPows){
                    this.claws = this.frontPows + this.hindPows;
                 }
             ]
+
         })
     </script>
 </oda-module>
