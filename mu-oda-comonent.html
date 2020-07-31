@@ -8,8 +8,15 @@
 <body>
 <oda-module id="my-component">
     <template>
-        <span v-text="property">Hellow world!</span>
-        <span v-text="Array.length">Array</span>
+        <style>
+            :host(
+                border: 5px solid red;
+                padding: 10px;
+                background-color: yellow;
+            )
+        </style>
+        <span style="border: 5px solid green; padding: 5px" v-text="property">Hellow world!</span>
+        <span style="border: 5px solid red; background-color: aqua; padding: 5px" v-text="Array.length">Array</span>
         <span v-for="item, index in Array" :key="index">Element[{{index}}]={{item}}  </span>
         <span v-text="propertyObj"></span>
         <span v-text="propertyObj.name2"></span>
@@ -19,6 +26,7 @@
         <span v-text="FirstName"></span>
         <span v-text="LastName"></span>
         <span v-text="FullName"></span>
+
     </template>
     <script>
         ODA({

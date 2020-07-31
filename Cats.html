@@ -8,11 +8,30 @@
 <body>
 <oda-module id="my-cat">
     <template>
-        <span  v-text="Gender">Мяу</span>
-        <span  v-text="nickName"></span>
-        <span v-for="item in pows" >Ножка{{item}} </span>
-        <span  v-text="property"></span>
-        <span>Колличество: </span><span  v-text="claws"></span>
+        <style>
+            :host(
+                background-color : yellow
+            )
+            .count{
+                border: 7px solid aqua;
+                background-color: darkorchid;
+                padding: 10px;
+            }
+            .prop{
+                background-color: blue;
+                border: 7px solid yellow;
+                padding: 5px;
+            }
+
+            .array{
+                background-color: greenyellow
+            }
+        </style>
+        <span style="border: 10px solid green; background-color: aqua"  v-text="Gender">Мяу</span>
+        <span style="background-color: red; border: 3px solid blue" v-text="nickName"></span>
+        <span class="array" v-for="item in pows" >Ножка{{item}} </span>
+        <span  class="prop" v-text="property"></span>
+        <span class="count">Колличество: </span><span  v-text="claws"></span>
     </template>
     <script>
         ODA({
@@ -59,7 +78,13 @@
                 },
                 claws:{
                     default: 0,
-                    type:Number
+                    type:Number,
+                    watch(n,o){
+                        if(n>10){
+                            alert("Генетичемкая аномалия так и запишем");
+                        }
+                    }
+
                 }
             },
             observers:[
