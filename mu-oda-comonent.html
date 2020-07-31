@@ -43,7 +43,10 @@
                     }
                 },
                 FirstName:{
-                    value: 'Sasha'
+                    value: 'Sasha',
+                    watch(n, o){
+                        alert('Старое значение: ' + o + 'Новое значени: ' + n);
+                    }
                 },
                 LastName:{
                     value : 'Vinichuk'
@@ -52,6 +55,9 @@
                     label: 'Полное имя',
                     get() {
                         return this.FirstName + ' ' + this.LastName;
+                    },
+                    watch(n, o){
+                        this.FullName = this.FirstName + n;
                     }
                 },
                 set(value){

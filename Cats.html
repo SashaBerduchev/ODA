@@ -12,6 +12,7 @@
         <span  v-text="nickName"></span>
         <span v-for="item in pows" >Ножка{{item}} </span>
         <span  v-text="property"></span>
+        <span>Колличество: </span><span  v-text="claws"></span>
     </template>
     <script>
         ODA({
@@ -37,7 +38,7 @@
                 pows:{
                     value:[{pow1:4},{pow2:4},{pow3:4},{pow4:4}]
                 },
-                _countClows:{
+                countClows:{
                       get(){
                          let count = this.pows.value;
                          return count
@@ -47,8 +48,25 @@
                     get(){
                         return 'Количество ' +  this._countClows;
                     }
+                },
+                frontPows:{
+                    default: '0',
+                    type: Number
+                },
+                hindPows:{
+                    default: '0',
+                    type: Number
+                },
+                claws:{
+                    default: 0,
+                    type:Number
                 }
-            }
+            },
+            observers:[
+                function observer(frontPows, hindPows){
+                   this.claws = this.frontPows + this.hindPows;
+                }
+            ]
         })
     </script>
 </oda-module>
