@@ -26,9 +26,9 @@
         <span v-text="FirstName"></span>
         <span v-text="LastName"></span>
         <span v-text="FullName"></span>
-        <button onclick="onclick()">Привет метод!</button>
-        <script>
-            function onclick() {
+        <input type="button" onclick="on_click()" value="Нажать"/>
+        <script type="text/javascript">
+            function on_click() {
                 console.log('startclick');
                 alert('startclick');
                 this.myMethod();
