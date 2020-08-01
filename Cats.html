@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="https://odant.org/web/core/oda.js"></script>
+    <script src="JStest.js"></script>
 </head>
 <body>
 <oda-module id="my-cat">
@@ -33,6 +34,7 @@
         <span  class="prop" v-text="property"></span>
         <span class="count">Колличество: </span><span  v-text="claws"></span>
 
+        <button onclick="calcClaws()">Calculate</button>
     </template>
     <script>
         ODA({
@@ -86,7 +88,11 @@
                         }
                     }
 
+                },
+                clawstext:{
+                    value: 0
                 }
+
             },
 
             observers:[

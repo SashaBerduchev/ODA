@@ -4,6 +4,7 @@
     <title>Title</title>
     <meta charset="UTF-8">
     <script src="https://odant.org/web/core/oda.js"></script>
+    <script src="JStest.js"></script>
 </head>
 <body>
 <oda-module id="my-component">
@@ -84,21 +85,6 @@
                 }
             }
         })
-        function on_click() {
-            console.log('startclick');
-
-            this.myMethod()
-        }
-        function myMethod(){
-            console.log('methodODA')
-
-            setInterval(()=>{
-                this.counter++;
-                console.log(this.counter);
-            }, 1000);
-        }
-
-
     </script>
 </oda-module>
 </body>
