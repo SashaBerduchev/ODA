@@ -27,15 +27,9 @@
         <span v-text="LastName"></span>
         <span v-text="FullName"></span>
         <input type="button" onclick="on_click()" value="Нажать"/>
-        <script type="text/javascript">
-            function on_click() {
-                console.log('startclick');
-                alert('startclick');
-                this.myMethod();
-            }
 
-        </script>
     </template>
+
     <script>
         ODA({
             is : 'my-component',
@@ -83,18 +77,28 @@
                     this.LastName = names[names.length - 1];
                 },
                 counter:{
-                    default:0
-                },
-                myMethod(){
-                    console.log('methodODA')
-                    alert('methodODA')
-                    setInterval(()=>{
-                        this.counter++;
-                    }, 1000);
+                    value:0,
+                    set(value){
+                        this.counter = value
+                    }
                 }
-
             }
         })
+        function on_click() {
+            console.log('startclick');
+
+            this.myMethod()
+        }
+        function myMethod(){
+            console.log('methodODA')
+
+            setInterval(()=>{
+                this.counter++;
+                console.log(this.counter);
+            }, 1000);
+        }
+
+
     </script>
 </oda-module>
 </body>
