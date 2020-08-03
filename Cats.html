@@ -34,7 +34,8 @@
         <span  class="prop" v-text="property"></span>
         <span class="count">Колличество: </span><span  v-text="claws"></span>
 
-        <button onclick="calcClaws()">Calculate</button>
+        <button @click="calcClaws()">Calculate</button>
+        <button @click="clickMyr()">Мур</button>
     </template>
     <script>
         ODA({
@@ -91,15 +92,29 @@
                 },
                 clawstext:{
                     value: 0
+                },
+                sound:{
+                    type:String
                 }
 
             },
 
+            calcClaws(event) {
+                this.clawstext = this.frontPows + this.hindPows;
+                console.log(this.clawstext);
+                myMethod();
+                on_click();
+            },
+
+            clickMyr(evvent){
+                alert("Myr");
+                this.sound = "Myr";
+            },
             observers:[
                 function observer(frontPows, hindPows){
-                   this.claws = this.frontPows + this.hindPows;
+                   this.countClows = this.frontPows + this.hindPows;
                 }
-            ]
+            ],
 
         })
     </script>

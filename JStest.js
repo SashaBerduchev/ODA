@@ -12,7 +12,3 @@ function myMethod(){
     }, 1000);
 }
 
-    function calcClaws(frontPows, hindPows) {
-        this.clawstext = this.frontPows + this.hindPows;
-        console.log(this.clawstext);
-    }

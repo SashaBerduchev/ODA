@@ -27,8 +27,9 @@
         <span v-text="FirstName"></span>
         <span v-text="LastName"></span>
         <span v-text="FullName"></span>
-        <input type="button" onclick="on_click()" value="Нажать"/>
 
+        <button v-on="{'click': onClick1, 'contextmenu': onClick2}">{{counter}}</button>
+        <button @click.once="onClick1">{{counter}}</button>
     </template>
 
     <script>
@@ -77,12 +78,15 @@
                     this.FirstName = names[0];
                     this.LastName = names[names.length - 1];
                 },
-                counter:{
-                    value:0,
-                    set(value){
-                        this.counter = value
-                    }
-                }
+                counter:0
+            },
+            onClick1(event){
+                this.counter++;
+                alert(event.target.tagName+ "Меня левой кнопкой нажали" + this.counter);
+            },
+            onClick2(event){
+                this.counter++;
+                alert(event.target.tagName+ "Меня правой кнопкой нажали" + this.counter);
             }
         })
     </script>
