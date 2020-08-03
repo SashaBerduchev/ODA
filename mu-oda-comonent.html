@@ -23,16 +23,7 @@
         <span v-text="propertyObj.name2"></span>
         <span v-for="value, name in propertyObj">{{name}}:{{value}}</span>
         <a href="Cats.html">Cats</a>
-        <a href="HW_1.html">HW</a>
-        <span v-text="FirstName"></span>
-        <span v-text="LastName"></span>
-        <span v-text="FullName"></span>
-
-        <button v-on="{'click': onClick1, 'contextmenu': onClick2}">{{counter}}</button>
-        <button @click.once="onClick1">{{counter}}</button>
-        <input @keydown.ctrl.alt.enter="onKeyDown"/>
-        <input @keydown.exact="onKeyDown"/>
-        <input @mousedown.right="onKeyDown"/>
+        <my-secondmodule></my-secondmodule>
     </template>
 
     <script>
@@ -93,9 +84,96 @@
             },
             onKeyDown(event){
                 alert("Нажал кнопку" + event.key);
+            },
+            listeners:{
+                'my-event':'OnMyEvent'
+            },
+
+            onBtnClick(){
+                alert('Start my event');
+                this.fire('my-event', 'Data');
+                this.$refs.span.dispatchEvent(new Event('my-event'));
+            },
+
+            OnMyEvent(event){
+                alert('Event already DONE!!!' + event.detail.value);
             }
         })
     </script>
+</oda-module>
+<oda-module id="my-secondmodule">
+    <template>
+        <a href="HW_1.html">HW</a>
+        <span v-text="FirstName"></span>
+        <span v-text="LastName"></span>
+        <span v-text="FullName"></span>
+
+        <button v-on="{'click': onClick1, 'contextmenu': onClick2}">{{counter}}</button>
+        <button @click.once="onClick1">{{counter}}</button>
+        <input @keydown.ctrl.alt.enter="onKeyDown"/>
+        <input @keydown.exact="onKeyDown"/>
+        <input @mousedown.right="onKeyDown"/>
+        <button @tap="onBtnClick">Button</button>
+
+    </template>
+    <script>
+        ODA({
+            is:'my-secondmodule',
+            properties: {
+                FirstName: {
+                    value: 'Sasha',
+                    watch(n, o) {
+                        alert('Старое значение: ' + o + 'Новое значени: ' + n);
+                    }
+                },
+                LastName: {
+                    value: 'Vinichuk'
+                },
+                FullName: {
+                    label: 'Полное имя',
+                    get() {
+                        return this.FirstName + ' ' + this.LastName;
+                        console.log(this.FullName);
+                    },
+                    watch(n, o) {
+                        this.FullName = this.FirstName + n;
+                    }
+                },
+                set(value) {
+                    let names = value.split(' ');
+                    this.FirstName = names[0];
+                    this.LastName = names[names.length - 1];
+                },
+                counter: 0
+            },
+            onClick1(event) {
+                this.counter++;
+                alert(event.target.tagName + "Меня левой кнопкой нажали" + this.counter);
+            },
+            onClick2(event) {
+                this.counter++;
+                alert(event.target.tagName + "Меня правой кнопкой нажали" + this.counter);
+            },
+            onKeyDown(event) {
+                alert("Нажал кнопку" + event.key);
+            },
+            listeners: {
+                'my-event': 'OnMyEvent'
+            },
+
+            onBtnClick() {
+                alert('Start my event');
+                this.fire('my-event', 'Data');
+                this.$refs.span.dispatchEvent(new Event('my-event'));
+            },
+
+            OnMyEvent(event) {
+                alert('Event already DONE!!!' + event.detail.value);
+            }
+
+        })
+    </script>
+
 </oda-module>
 </body>
 </html>

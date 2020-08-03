@@ -39,12 +39,16 @@
         <input @keydown="onKey"/>
 
         <button @click="clickMyr()">Кнопка</button>
+        <my-dog :name ='propdog'></my-dog>
     </template>
     <script>
         ODA({
             is : 'my-cat',
             properties: {
 
+                propdog:{
+                    value:'Dog'
+                },
                 nickName: {
                     category : 'Свойства кошки',
                     default: 'Мурка',
@@ -137,6 +141,16 @@
             }
 
 
+        })
+    </script>
+</oda-module>
+<oda-module id="my-dog">
+    <template>
+        <span>{{propdog}}</span>
+    </template>
+    <script>
+        ODa({
+            is: 'my-dog'
         })
     </script>
 </oda-module>
