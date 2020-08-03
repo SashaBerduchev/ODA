@@ -37,6 +37,8 @@
         <button @click="calcClaws()">Calculate</button>
         <button @click="clickMyr()">Мур</button>
         <input @keydown="onKey"/>
+
+        <button @click="clickMyr()">Кнопка</button>
     </template>
     <script>
         ODA({
@@ -124,6 +126,15 @@
                    this.countClows = this.frontPows + this.hindPows;
                 }
             ],
+
+            listeners:{
+                click(){
+                    alert("Нажали левую кноаку мыши");
+                },
+                contextmenu(){
+                    alert("Нажали правую кноаку мыши");
+                }
+            }
 
 
         })
