@@ -30,6 +30,9 @@
 
         <button v-on="{'click': onClick1, 'contextmenu': onClick2}">{{counter}}</button>
         <button @click.once="onClick1">{{counter}}</button>
+        <input @keydown.ctrl.alt.enter="onKeyDown"/>
+        <input @keydown.exact="onKeyDown"/>
+        <input @mousedown.right="onKeyDown"/>
     </template>
 
     <script>
@@ -87,6 +90,9 @@
             onClick2(event){
                 this.counter++;
                 alert(event.target.tagName+ "Меня правой кнопкой нажали" + this.counter);
+            },
+            onKeyDown(event){
+                alert("Нажал кнопку" + event.key);
             }
         })
     </script>

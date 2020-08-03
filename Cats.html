@@ -36,6 +36,7 @@
 
         <button @click="calcClaws()">Calculate</button>
         <button @click="clickMyr()">Мур</button>
+        <input @keydown="onKey"/>
     </template>
     <script>
         ODA({
@@ -95,6 +96,9 @@
                 },
                 sound:{
                     type:String
+                },
+                keys:{
+                    type : String
                 }
 
             },
@@ -106,15 +110,21 @@
                 on_click();
             },
 
-            clickMyr(evvent){
+            clickMyr(event){
                 alert("Myr");
                 this.sound = "Myr";
+            },
+
+            onKey(event){
+                alert(event.key);
+                this.keys += event.key;
             },
             observers:[
                 function observer(frontPows, hindPows){
                    this.countClows = this.frontPows + this.hindPows;
                 }
             ],
+
 
         })
     </script>
