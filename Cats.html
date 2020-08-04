@@ -40,6 +40,7 @@
 
         <button @click="clickMyr()">Кнопка</button>
         <my-dog :name ='propdog'></my-dog>
+        <input v-model="voice"/>
     </template>
     <script>
         ODA({
@@ -105,6 +106,9 @@
                 },
                 keys:{
                     type : String
+                },
+                voice:{
+                    value:"Гав"
                 }
 
             },

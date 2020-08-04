@@ -23,6 +23,7 @@
         <span v-text="propertyObj.name2"></span>
         <span v-for="value, name in propertyObj">{{name}}:{{value}}</span>
         <a href="Cats.html">Cats</a>
+        <input v-model="inputprop"/>
         <my-secondmodule></my-secondmodule>
     </template>
 
@@ -72,7 +73,9 @@
                     this.FirstName = names[0];
                     this.LastName = names[names.length - 1];
                 },
-                counter:0
+                counter:0,
+
+                inputprop:"Input property"
             },
             onClick1(event){
                 this.counter++;
