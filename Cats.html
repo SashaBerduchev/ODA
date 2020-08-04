@@ -39,7 +39,6 @@
         <input @keydown="onKey"/>
 
         <button @click="clickMyr()">Кнопка</button>
-        <my-dog ::name ='propdog'></my-dog>
         <input v-model="voice"/>
     </template>
     <script>
@@ -156,6 +155,7 @@
     <script>
         ODА({
             is: 'my-dog',
+            extends:'this, my-cat',
             properties: {
                 propdog: {
                     type: String
