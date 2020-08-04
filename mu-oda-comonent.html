@@ -25,6 +25,16 @@
         <a href="Cats.html">Cats</a>
         <input v-model="inputprop"/>
         <my-secondmodule></my-secondmodule>
+
+
+        <button type="submit">
+            <slot>Отправить</slot>
+        </button>
+
+        <slot name="mySlot">Мой слот</slot>
+        <div>
+            <span slot="mySlot" v-text="property">Мой спан</span>
+        </div>>
     </template>
 
     <script>
