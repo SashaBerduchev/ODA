@@ -44,6 +44,9 @@
     <script>
         ODA({
             is : 'my-cat',
+            ready(){
+                alert('Кот');
+            },
             properties: {
 
                 propdog:{
@@ -148,14 +151,17 @@
         })
     </script>
 </oda-module>
+
 <oda-module id="my-dog">
     <template>
-        <span>{{propdog}}</span>
+        <span>Dog</span>
     </template>
     <script>
         ODА({
             is: 'my-dog',
-            extends:'this, my-cat',
+            ready(){
+                alert('Пес');
+            },
             properties: {
                 propdog: {
                     type: String
