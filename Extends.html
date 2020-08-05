@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://odant.org/web/core/oda.js"></script>
+</head>
+<body>
+<oda-module id="my-first">
+    <template>
+        <span>Наследник</span>
+    </template>
+    <script>
+        ODA({
+            is: 'my-first',
+            extends:'my-second',
+            ready(){
+                alert('Хук наследника');
+            }
+
+        })
+    </script>
+</oda-module>
+
+<oda-module id="my-second">
+    <template>
+        <span>Родитель</span>
+    </template>
+    <script>
+        ODA({
+            is:'my-second',
+            ready(){
+                alert('Хук родителя');
+            }
+        })
+    </script>
+</oda-module>
+</body>
+</html>

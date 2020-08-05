@@ -24,7 +24,6 @@
         <span v-for="value, name in propertyObj">{{name}}:{{value}}</span>
         <a href="Cats.html">Cats</a>
         <input v-model="inputprop"/>
-        <my-secondmodule></my-secondmodule>
 
 
         <button type="submit">
@@ -33,13 +32,18 @@
 
         <slot name="mySlot">Мой слот</slot>
         <div>
-            <span slot="mySlot" v-text="property">Мой спан</span>
-        </div>>
+            <span  slot="mySlot" v-text="property">Мой спан</span>
+        </div>
+        <span>Наследник</span>
     </template>
 
     <script>
         ODA({
             is : 'my-component',
+            extends:'my-secondmodule',
+            ready(){
+                alert('Хук наследника')
+            },
             properties:{
                 property :{
                     category : 'Моя категория',
@@ -127,17 +131,24 @@
         <input @keydown.exact="onKeyDown"/>
         <input @mousedown.right="onKeyDown"/>
         <button @tap="onBtnClick">Button</button>
-
+        <a href="Extends.html">Extends</a>
     </template>
     <script>
         ODA({
             is:'my-secondmodule',
+            ready(){
+                alert('Хук родителя')
+            },
             properties: {
+
                 FirstName: {
                     value: 'Sasha',
                     watch(n, o) {
                         alert('Старое значение: ' + o + 'Новое значени: ' + n);
                     }
+                },
+                mySpotMethod(){
+                    alert('MySpotMethod');
                 },
                 LastName: {
                     value: 'Vinichuk'
